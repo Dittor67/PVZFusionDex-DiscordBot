@@ -229,7 +229,7 @@ class Balls(commands.GroupCog, group_name=settings.players_group_cog_name):
 
     @app_commands.command()
     @app_commands.checks.cooldown(1, 60, key=lambda i: i.user.id)
-    async def completion(
+    async def almanac(
         self,
         interaction: discord.Interaction["BallsDexBot"],
         user: discord.User | None = None,
@@ -237,14 +237,14 @@ class Balls(commands.GroupCog, group_name=settings.players_group_cog_name):
         self_caught: bool | None = None,
     ):
         """
-        Show your current completion of the BallsDex.
+        Show your current alamanac of the BallsDex.
 
         Parameters
         ----------
         user: discord.User
-            The user whose completion you want to view, if not yours.
+            The user whose almanac you want to view, if not yours.
         special: Special
-            The special you want to see the completion of
+            The special you want to see the almanac of
         self_caught: bool
             Filter only for countryballs that the user themself caught/didn't catch (ie no trades)
         """
@@ -266,7 +266,7 @@ class Balls(commands.GroupCog, group_name=settings.players_group_cog_name):
             blocked = await player.is_blocked(interaction_player)
             if blocked and not is_staff(interaction):
                 await interaction.followup.send(
-                    "You cannot view the completion of a user that has blocked you.",
+                    "You cannot view the almanac of a user that has blocked you.",
                     ephemeral=True,
                 )
                 return
